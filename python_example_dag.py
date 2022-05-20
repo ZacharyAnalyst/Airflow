@@ -10,7 +10,7 @@ default_args = {
   'retries' = 0,
 }
 
-dag = DAG('calc_example',
+dag_2 = DAG('calc_example',
       owner = default_args, 
       catchup = False,
       schedule_interval='00 20 * * *')
@@ -21,17 +21,17 @@ def some_function():
 def bash_function():
   return echo 'That's correct'
 
-t1 = PythonOperator(
+tt1 = PythonOperator(
   task_id = 'realisation of the Py function',
   python_callable = some_function,
-  dag=dag
+  dag=dag_2
 )
 
-t2 = BashOperator(
+tt2 = BashOperator(
   task_id = 'realisation of the Bash function',
   bash_command = bash_function,
-  dag = dag
+  dag = dag_2
 )
 
-t1 >> t2 
+tt1 >> tt2 
 

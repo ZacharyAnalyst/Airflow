@@ -12,5 +12,5 @@ t5 = DummyOperator(task_id='task_5',dag=dag)
 t6 = DummyOperator(task_id='task_6',dag=dag)
 t7 = DummyOperator(task_id='task_7',dag=dag)
 
-# t1 >> [t4, [t4, t7] << t2 << t6, t3, t2 << t3 << t5]
+t1 >> [t4, [t4, t7] << t2 << t6, t3, t2 << t3 << t5]
 
